@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet">
+    <link href="../css/style.css" rel="stylesheet" type="text/css"> 
+    <title>Shopping Cart</title>
+    <style>
+        .cart-item {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        .cart-item h4 {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav__header">
+            <div class="nav__logo">
+                <ul>
+                    <li><a href="/html/home.html">HOME</a></li>
+                    <li><a href="/html/owner-bio.html">ABOUT US</a></li>
+                    <li><a href="/html/menu.html">MENU</a></li>
+                    <li><a href="../html/cart.html">CART</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <header class="header">
+        <h1>Your Shopping Cart</h1>
+    </header>
+
+    <section class="section__container order__container" id="cart">
+        <h2 class="section__header">Items in Your Cart</h2>
+        <div id="cart-items"></div>
+    </section>
+
+    <div class="main">
+        <div class="section-title">
+            <h1>Your Order</h1>
+        </div>
+    </div>
+
+    <div class="order-details">
+        <!-- Order details will be generated here -->
+    </div>
+
+    <script src="../js/script.js"></script>
+    <script>
+        // Function to validate the quantity input
+        function validateQuantity(quantityInput) {
+            var quantity = parseInt(quantityInput.value);
+            if (isNaN(quantity) || quantity < 1 || quantity > 10) {
+                // Display error message
+                alert("Please enter a valid quantity between 1 and 10.");
+                // Reset quantity input to 1
+                quantityInput.value = 1;
+                return false;
+            }
+            return true;
+        }
+
+        // Function to Display Order Details
+        function displayOrder() {
+            var cart = JSON.parse(localStorage.getItem('cart')) || [];
+            var orderDetails = document.querySelector('.order-details');
+            orderDetails.innerHTML = ''; // Clear existing content
+
+            // Iterate through each item in the cart
+            cart.forEach(function(item) {
+                var itemDiv = document.createElement('div');
+                itemDiv.classList.add('item');
+
+                var itemName = document.createElement('p');
+                itemName.textContent = item.quantity + 'x ' + item.itemName;
+                
+                // Create a container div for the quantity input and remove button
+                var controlsDiv = document.createElement('div');
+                controlsDiv.classList.add('controls');
+
+                // Create the quantity input element
+                var quantityInput = document.createElement('input');
+                quantityInput.type = 'number';
+                quantityInput.value = item.quantity;
+                quantityInput.min = 1;
+                quantityInput.max = 10;
+
+                // Option to remove item from cart
+                var removeButton = document.createElement('button');
+                removeButton.textContent = 'Remove';
+                removeButton.onclick = function() {
+                    // Remove the item from the cart
+                    cart = cart.filter(function(cartItem) {
+                        return cartItem.itemName !== item.itemName;
+                    });
+                    localStorage.setItem('cart', JSON.stringify(cart));
+                    // Update display
+                    displayOrder();
+                };
+
+                // Append event listener to quantity input for validation
+                quantityInput.addEventListener('change', function() {
+                    if (!validateQuantity(this)) {
+                        // Display feedback indicating which item needs correction
+                        alert("Please correct the quantity for: " + item.itemName);
+                    }
+                });
+
+                // Append item name and controls container to the item div
+                itemDiv.appendChild(itemName);
+                controlsDiv.appendChild(quantityInput);
+                controlsDiv.appendChild(removeButton);
+                itemDiv.appendChild(controlsDiv);
+
+                // Append item div to order details
+                orderDetails.appendChild(itemDiv);
+            });
+
+            // Calculate and display the total price
+            var totalPrice = cart.reduce(function(total, item) {
+                return total + (parseFloat(item.itemPrice) * parseInt(item.quantity));
+            }, 0);
+
+            var totalPriceDiv = document.createElement('div');
+            totalPriceDiv.classList.add('total-price');
+            totalPriceDiv.textContent = 'Total Price: $' + totalPrice.toFixed(2);
+            orderDetails.appendChild(totalPriceDiv);
+        }
+
+        // Call displayOrder function when page loads
+        window.onload = displayOrder;
+    </script>
+
+    <footer class="footer">
+        <div>
+            <ul class="footer__links">
+                <li>
+                    <span><i class="ri-map-pin-2-fill"></i></span>
+                    14000 University Blvd. Sugar Land, TX 77479
+                </li>
+                <li>
+                    <span><i class="ri-mail-fill"></i></span>
+                    cafeteria@uh.edu
+                </li>
+            </ul>
+        </div>
+    </footer>
+</body>
+</html>

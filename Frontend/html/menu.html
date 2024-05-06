@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <link href="../css/style.css" rel="stylesheet" type="text/css"> 
+   
+    <title>UH Sugar Land Cafeteria</title>
+</head>
+
+
+<body>
+<header class="header">
+    <h1>Cougar Cuisine</h1>
+    <nav>
+        <div class="nav__header">
+        <div class="nav__logo">
+        <ul>
+            <li><a href="../html/home.html">HOME</a></li>
+            <li><a href="../html/owner-bio.html">ABOUT US</a></li>
+            <li><a href="../html/menu.html">MENU</a></li>
+            <li><a href="../html/cart.html">CART</a></li>
+        </ul>
+    </div>
+    </div>
+    </nav>
+    
+    <div class="section__container header__container" id="home">
+        <div class="header__image">
+    </div>
+    <div class="header__content">
+        <h2>hungry?</h2>
+        <h1></UL>ORDER <span>HERE!</span></UL></h1>
+        <div class="icon-cart">
+        <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 4h1.5L9 16m0 0h8m-8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm-8.5-3h9.25L19 7H7.312"/>
+        </svg> 
+        </div>
+    </div>
+</header>
+
+
+<section class="section__container order__container" id="menu">
+    <h3>FUN. FRESH. FILLING</h3>
+    <h2 class="section__header">CHOOSE & ENJOY</h2>
+    <p class="section__description">
+        Here at Cougar Cuisine, we provide students with the tastiest meals using 
+        our locally sourced products. We believe the importance of receiving the most essential nutrients
+        while still being able to savor meals.
+    </p>
+    <div class="order__grid">
+      <div class="order__card">
+        <img src="../imgs/avocado-toast.jpg" alt="order" />
+        <h4>Avocado Toast on Sourdough Bread ($11)</h4>
+        <p>
+          Sink your teeth into our campus favorite breakfast, the Avocado Toast on Sourdough Bread. Additional add-ons include cream cheese, 
+          cottage cheese, feta cheese, cherry tomatoes, egg, and hot honey sauce. Comes with 2 toasts.
+        </p>
+        <button class="button" onclick="addToOrder(this, 11.00)">Add to Order</button>
+
+        <select class="quantitySelect">
+          <option value="0">0</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+        </select>
+      </div>
+
+      <div class="order__grid">
+        <div class="order__card">
+          <img src="../imgs/banana-muffin.jpg" alt="order" />
+          <h4>Protein Banana Muffin ($4.50)</h4>
+          <p>
+            Enjoy our fresh-baked and protein-packed banana muffin, ready to keep you full throughout your classes.
+          </p>
+          <button class="button" onclick="addToOrder(this, 4.50)">Add to Order</button>
+
+          <select class="quantitySelect">
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
+        </div>
+
+        <div class="order__grid">
+            <div class="order__card">
+              <img src="../imgs/cava-bowl.jpg" alt="order" />
+              <h4>Mediterranean Bowl ($10)</h4>
+              <p>
+               Our fresh Mediterranean bowl, packed with harissa chicken, greens, grains, cucumbers, sweet onions, tomatoes, feta, and pita bread.
+              </p>
+              <button class="button" onclick="addToOrder(this, 10.00)">Add to Order</button>
+
+        <select class="quantitySelect">
+          <option value="0">0</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+        </select>
+            </div>
+
+
+     
+      <div class="order__card">
+        <img src="../imgs/spicy-chicken-sandwich.jpg" alt="order" />
+        <h4>Spicy Chicken Sandwich ($7.50)</h4>
+        <p>
+          Embrace the vibrant flavors of our Spicy Chicken Sandwich, a
+          celebration of freshness and wholesome goodness. Comes with a side of fries: sweet potato or waffle fries.
+        </p>
+        <button class="button" onclick="addToOrder(this, 7.50)">Add to Order</button>
+        <select id="quantitySelect">
+          <option value="0">0</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+        </select>
+      </div>
+      
+      <div class="order__card">
+        <img src="../imgs/marry-me-chicken-pasta.webp" alt="order" />
+        <h4>Marry Me Pasta ($5.50)</h4>
+        <p>
+          Induldge in our TikTok fan-favorite Marry Me Pasta, Chicken available for add-on.  
+        </p>
+        <button class="button" onclick="addToOrder(this, 5.50)">Add to Order</button>
+        <select class="quantitySelect">
+          <option value="0">0</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+        </select>
+      </div>
+    </div>
+
+    
+
+  <footer class="footer">
+    <div>
+        <ul class="footer__links">
+            <li>
+                <span><i class="ri-map-pin-2-fill"></i></span>
+                14000 University Blvd. Sugar Land, TX 77479
+              </li>
+              <li>
+                <span><i class="ri-mail-fill"></i></span>
+                cafeteria@uh.edu
+              </li>
+        </ul>
+    </div>
+    
+
+  </footer>
+
+  <script src="../js/script.js"></script>
+</body>
+</html>
